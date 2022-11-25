@@ -26,6 +26,6 @@ config_by_env = {
   }
 }
 
-config = config_by_env.fetch(ENV.fetch('RACK_ENV', 'development'))
+config = ENV.fetch('DATABASE_URL', config_by_env.fetch(ENV.fetch('RACK_ENV', 'development')))
 
 DB = Sequel.connect(config)
