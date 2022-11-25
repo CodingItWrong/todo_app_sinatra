@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 ruby '3.1.2'
 
 gem 'coderay'
+gem 'debug'
 gem 'pg'
 gem 'puma'
 gem 'rack-test'

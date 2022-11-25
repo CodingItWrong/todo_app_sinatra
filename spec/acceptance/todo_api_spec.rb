@@ -2,8 +2,8 @@
 
 require 'rack/test'
 require 'json'
+require 'debug'
 require_relative '../../app/api'
-# require_relative '../../app/todo'
 
 def app
   TodoApp::API.new
@@ -25,6 +25,9 @@ module TodoApp
 
       get '/todos'
       expect(last_response.status).to eq(200)
+      expect(last_response.headers).to include(
+        'Content-Type' => 'application/json'
+      )
 
       expenses = JSON.parse(last_response.body)
       expect(expenses).to contain_exactly(
@@ -38,6 +41,9 @@ module TodoApp
       post '/todos', JSON.generate(todo)
 
       expect(last_response.status).to eq(200)
+      expect(last_response.headers).to include(
+        'Content-Type' => 'application/json'
+      )
 
       parsed = JSON.parse(last_response.body)
       expect(parsed).to include('id' => a_kind_of(Integer))
