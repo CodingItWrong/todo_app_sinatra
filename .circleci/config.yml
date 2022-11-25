@@ -31,7 +31,7 @@ jobs:
 
       - run:
           name: run tests
-          command: RACK_ENV=ci bundle exec rspec
+          command: RACK_ENV=ci bin/rspec
 
 workflows:
   test-workflow:
