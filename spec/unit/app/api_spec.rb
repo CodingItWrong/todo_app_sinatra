@@ -4,8 +4,6 @@ require_relative '../../../app/api'
 require 'rack/test'
 
 module TodoApp
-  RecordResult = Struct.new(:success?, :expense_id, :error_message)
-
   RSpec.describe API do
     include Rack::Test::Methods
 
@@ -38,6 +36,28 @@ module TodoApp
 
       it 'responds with a 200 (OK)' do
         get '/todos'
+        expect(last_response.status).to eq(200)
+      end
+    end
+
+    describe 'POST /todos' do
+      let(:todo) { { 'name' => 'Buy cofee' } }
+
+      before do
+        allow(repo).to receive(:create)
+          .with(todo)
+          .and_return(RecordResult.new(true, 417, nil))
+      end
+
+      it 'returns the todo id' do
+        post '/todos', JSON.generate(todo)
+
+        parsed = JSON.parse(last_response.body)
+        expect(parsed).to include('id' => 417)
+      end
+
+      it 'responds with a 200 (OK)' do
+        post '/todos', JSON.generate(todo)
         expect(last_response.status).to eq(200)
       end
     end

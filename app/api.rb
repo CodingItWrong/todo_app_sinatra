@@ -16,6 +16,12 @@ module TodoApp
       JSON.generate(todos)
     end
 
+    post '/todos' do
+      todo = JSON.parse(request.body.read)
+      result = repo.create(todo)
+      JSON.generate('id' => result.todo_id)
+    end
+
     private
 
     attr_reader :repo

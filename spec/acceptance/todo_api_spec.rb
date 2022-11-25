@@ -32,5 +32,24 @@ module TodoApp
         a_hash_including('name' => 'Go to the zoo')
       )
     end
+
+    it 'allows creating todos' do
+      todo = { 'name' => 'Buy coffee' }
+      post '/todos', JSON.generate(todo)
+
+      expect(last_response.status).to eq(200)
+
+      parsed = JSON.parse(last_response.body)
+      expect(parsed).to include('id' => a_kind_of(Integer))
+      id = parsed['id']
+
+      get '/todos'
+      expect(last_response.status).to eq(200)
+
+      expenses = JSON.parse(last_response.body)
+      expect(expenses).to contain_exactly(
+        a_hash_including('id' => id, 'name' => 'Buy coffee')
+      )
+    end
   end
 end

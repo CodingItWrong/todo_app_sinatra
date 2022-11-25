@@ -23,5 +23,25 @@ module TodoApp
         )
       end
     end
+
+    describe '#create' do
+      let(:todo) do
+        {
+          'name' => 'Buy coffee',
+          'completed_at' => '2022-11-25'
+        }
+      end
+
+      it 'saves the todo in the DB' do
+        result = repo.create(todo)
+
+        expect(result).to be_success
+        expect(DB[:todos].all).to match [a_hash_including(
+          id: result.todo_id,
+          name: 'Buy coffee',
+          completed_at: Date.iso8601('2022-11-25')
+        )]
+      end
+    end
   end
 end
