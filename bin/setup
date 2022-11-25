@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+createdb todo_app_sinatra_development
+createdb todo_app_sinatra_test
+./bin/migrate
