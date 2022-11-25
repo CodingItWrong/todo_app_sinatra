@@ -16,6 +16,13 @@ config_by_env = {
     user: 'josh',
     password: nil,
     database: 'todo_app_sinatra_test'
+  },
+  'ci' => {
+    adapter: 'postgres',
+    host: 'localhost',
+    user: 'postgres',
+    password: nil,
+    database: 'circle_test'
   }
 }
 

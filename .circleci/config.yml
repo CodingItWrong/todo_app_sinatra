@@ -1,0 +1,39 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: cimg/ruby:3.1.2
+      - image: cimg/postgres:14.5
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v2-dependencies-{{ checksum "Gemfile.lock" }}
+          # fallback to using the latest cache if no exact match is found
+          - v2-dependencies-
+
+      - run:
+          name: install dependencies
+          command: |
+            gem update bundler
+            bundle config set path 'vendor/bundle'
+            bundle install --jobs=4 --retry=3
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v2-dependencies-{{ checksum "Gemfile.lock" }}
+
+      - run:
+          name: run tests
+          command: RACK_ENV=ci bundle exec rspec
+
+workflows:
+  test-workflow:
+    jobs:
+      - test
