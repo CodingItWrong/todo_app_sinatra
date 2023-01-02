@@ -27,6 +27,13 @@ $ bin/serve
 $ bin/rspec
 ```
 
+## Releases
+
+Runs on Heroku.
+
+- Push or merge to `main`; it will be automatically deployed
+- Run database migrations with `heroku run bin/migrate-prod`
+
 ## License
 
 MIT
