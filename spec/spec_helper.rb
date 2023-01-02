@@ -13,7 +13,7 @@
 # it.
 #
 
-ENV['RACK_ENV'] ||= 'test'
+ENV["RACK_ENV"] ||= "test"
 
 # See https://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
@@ -47,8 +47,8 @@ RSpec.configure do |config|
   # triggering implicit auto-inclusion in groups with matching metadata.
   config.shared_context_metadata_behavior = :apply_to_host_groups
 
-# The settings below are suggested to provide a good initial experience
-# with RSpec, but feel free to customize to your heart's content.
+  # The settings below are suggested to provide a good initial experience
+  # with RSpec, but feel free to customize to your heart's content.
   # This allows you to limit a spec run to individual examples or groups
   # you care about by tagging them with `:focus` metadata. When nothing
   # is tagged with `:focus`, all examples get run. RSpec also provides
@@ -97,9 +97,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 
-  config.filter_gems_from_backtrace 'rack', 'rack-test', 'sequel', 'sinatra'
+  config.filter_gems_from_backtrace "rack", "rack-test", "sequel", "sinatra"
 
   config.when_first_matching_example_defined(:db) do
-    require_relative 'support/db'
+    require_relative "support/db"
   end
 end

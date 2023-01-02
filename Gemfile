@@ -1,24 +1,21 @@
 # frozen_string_literal: true
 
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-ruby '3.2.0'
+ruby "3.2.0"
 
-gem 'pg'
-gem 'puma'
-gem 'sequel'
-gem 'sinatra'
-
-group :development do
-  gem 'rubocop'
-end
+gem "pg"
+gem "puma"
+gem "sequel"
+gem "sinatra"
 
 group :test do
-  gem 'coderay'
-  gem 'rack-test'
-  gem 'rspec'
+  gem "coderay"
+  gem "rack-test"
+  gem "rspec"
 end
 
 group :development, :test do
-  gem 'debug'
+  gem "debug"
+  gem "standard"
 end

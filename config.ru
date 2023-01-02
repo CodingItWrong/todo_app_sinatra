@@ -1,4 +1,4 @@
 # frozen_string_literal: true
 
-require_relative 'app/api'
+require_relative "app/api"
 run TodoApp::API.new

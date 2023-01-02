@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative '../config/sequel'
+require_relative "../config/sequel"
 
 module TodoApp
   RecordResult = Struct.new(:success?, :todo_id, :error_message)
