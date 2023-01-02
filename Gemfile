@@ -9,10 +9,6 @@ gem 'puma'
 gem 'sequel'
 gem 'sinatra'
 
-group :development do
-  gem 'rubocop'
-end
-
 group :test do
   gem 'coderay'
   gem 'rack-test'
@@ -21,4 +17,5 @@ end
 
 group :development, :test do
   gem 'debug'
+  gem 'standard'
 end
