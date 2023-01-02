@@ -26,7 +26,7 @@ jobs:
 
       - save_cache:
           paths:
-            - node_modules
+            - vendor/bundle
           key: v2-dependencies-{{ checksum "Gemfile.lock" }}
 
       - run:
