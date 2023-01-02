@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require 'sinatra/base'
-require 'json'
-require_relative 'todo_repo'
+require "sinatra/base"
+require "json"
+require_relative "todo_repo"
 
 module TodoApp
   class API < Sinatra::Base
@@ -11,19 +11,19 @@ module TodoApp
       super()
     end
 
-    get '/todos' do
+    get "/todos" do
       todos = @repo.all
 
-      content_type 'application/json'
+      content_type "application/json"
       JSON.generate(todos)
     end
 
-    post '/todos' do
+    post "/todos" do
       todo = JSON.parse(request.body.read)
       result = repo.create(todo)
 
-      content_type 'application/json'
-      JSON.generate('id' => result.todo_id)
+      content_type "application/json"
+      JSON.generate("id" => result.todo_id)
     end
 
     private

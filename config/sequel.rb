@@ -1,31 +1,31 @@
 # frozen_string_literal: true
 
-require 'sequel'
+require "sequel"
 
 config_by_env = {
-  'development' => {
-    adapter: 'postgres',
-    host: 'localhost',
-    user: 'josh',
+  "development" => {
+    adapter: "postgres",
+    host: "localhost",
+    user: "josh",
     password: nil,
-    database: 'todo_app_sinatra_development'
+    database: "todo_app_sinatra_development"
   },
-  'test' => {
-    adapter: 'postgres',
-    host: 'localhost',
-    user: 'josh',
+  "test" => {
+    adapter: "postgres",
+    host: "localhost",
+    user: "josh",
     password: nil,
-    database: 'todo_app_sinatra_test'
+    database: "todo_app_sinatra_test"
   },
-  'ci' => {
-    adapter: 'postgres',
-    host: 'localhost',
-    user: 'postgres',
+  "ci" => {
+    adapter: "postgres",
+    host: "localhost",
+    user: "postgres",
     password: nil,
-    database: 'circle_test'
+    database: "circle_test"
   }
 }
 
-config = ENV.fetch('DATABASE_URL') { config_by_env.fetch(ENV.fetch('RACK_ENV', 'development')) }
+config = ENV.fetch("DATABASE_URL") { config_by_env.fetch(ENV.fetch("RACK_ENV", "development")) }
 
 DB = Sequel.connect(config)

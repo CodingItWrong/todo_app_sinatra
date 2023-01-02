@@ -3,7 +3,7 @@
 RSpec.configure do |c|
   c.before(:suite) do
     Sequel.extension :migration
-    Sequel::Migrator.run(DB, 'db/migrations')
+    Sequel::Migrator.run(DB, "db/migrations")
     DB[:todos].truncate
   end
 
