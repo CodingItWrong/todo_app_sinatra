@@ -1,6 +1,9 @@
 version: 2
 updates:
-- package-ecosystem: "bundler"
-  directory: "/"
-  schedule:
-    interval: "monthly"
+  - package-ecosystem: "bundler"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    ignore:
+      - dependency-name: "sinatra"
+        versions: [">3.x"]
