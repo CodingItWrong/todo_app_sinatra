@@ -21,7 +21,7 @@ GEM
     lint_roller (1.1.0)
     mustermann (3.0.0)
       ruby2_keywords (~> 0.0.1)
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     parallel (1.27.0)
     parser (3.3.9.0)
       ast (~> 2.4.1)
@@ -35,7 +35,7 @@ GEM
     psych (5.2.6)
       date
       stringio
-    puma (7.0.4)
+    puma (7.1.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.10)
